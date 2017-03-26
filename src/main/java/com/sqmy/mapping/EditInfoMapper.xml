@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sqmy.dao.EditInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sqmy.model.EditInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="primary_id" property="primaryId" jdbcType="INTEGER" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="attachment_address" property="attachmentAddress" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sqmy.model.EditInfo" extends="BaseResultMap" >
+    <result column="edit_content" property="editContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, primary_id, unit_id, edit_time, attachment_address, state
+  </sql>
+  <sql id="Blob_Column_List" >
+    edit_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from edit_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from edit_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sqmy.model.EditInfo" >
+    insert into edit_info (id, primary_id, unit_id, 
+      edit_time, attachment_address, state, 
+      edit_content)
+    values (#{id,jdbcType=INTEGER}, #{primaryId,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{attachmentAddress,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{editContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sqmy.model.EditInfo" >
+    insert into edit_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="primaryId != null" >
+        primary_id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="attachmentAddress != null" >
+        attachment_address,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="editContent != null" >
+        edit_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="primaryId != null" >
+        #{primaryId,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachmentAddress != null" >
+        #{attachmentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="editContent != null" >
+        #{editContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sqmy.model.EditInfo" >
+    update edit_info
+    <set >
+      <if test="primaryId != null" >
+        primary_id = #{primaryId,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachmentAddress != null" >
+        attachment_address = #{attachmentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="editContent != null" >
+        edit_content = #{editContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sqmy.model.EditInfo" >
+    update edit_info
+    set primary_id = #{primaryId,jdbcType=INTEGER},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      attachment_address = #{attachmentAddress,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      edit_content = #{editContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sqmy.model.EditInfo" >
+    update edit_info
+    set primary_id = #{primaryId,jdbcType=INTEGER},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      attachment_address = #{attachmentAddress,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

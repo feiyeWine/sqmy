@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sqmy.dao.AuditInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sqmy.model.AuditInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="primary_id" property="primaryId" jdbcType="INTEGER" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="audit_time" property="auditTime" jdbcType="DATE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sqmy.model.AuditInfo" extends="BaseResultMap" >
+    <result column="instruction_content" property="instructionContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, primary_id, editor_id, unit_name, audit_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    instruction_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from audit_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from audit_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sqmy.model.AuditInfo" >
+    insert into audit_info (id, unit_id, primary_id, 
+      editor_id, unit_name, audit_time, 
+      instruction_content)
+    values (#{id,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, #{primaryId,jdbcType=INTEGER}, 
+      #{editorId,jdbcType=INTEGER}, #{unitName,jdbcType=VARCHAR}, #{auditTime,jdbcType=DATE}, 
+      #{instructionContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sqmy.model.AuditInfo" >
+    insert into audit_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="primaryId != null" >
+        primary_id,
+      </if>
+      <if test="editorId != null" >
+        editor_id,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="instructionContent != null" >
+        instruction_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="primaryId != null" >
+        #{primaryId,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=DATE},
+      </if>
+      <if test="instructionContent != null" >
+        #{instructionContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sqmy.model.AuditInfo" >
+    update audit_info
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="primaryId != null" >
+        primary_id = #{primaryId,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=DATE},
+      </if>
+      <if test="instructionContent != null" >
+        instruction_content = #{instructionContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sqmy.model.AuditInfo" >
+    update audit_info
+    set unit_id = #{unitId,jdbcType=INTEGER},
+      primary_id = #{primaryId,jdbcType=INTEGER},
+      editor_id = #{editorId,jdbcType=INTEGER},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=DATE},
+      instruction_content = #{instructionContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sqmy.model.AuditInfo" >
+    update audit_info
+    set unit_id = #{unitId,jdbcType=INTEGER},
+      primary_id = #{primaryId,jdbcType=INTEGER},
+      editor_id = #{editorId,jdbcType=INTEGER},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

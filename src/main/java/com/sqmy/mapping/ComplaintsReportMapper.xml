@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sqmy.dao.ComplaintsReportMapper" >
+  <resultMap id="BaseResultMap" type="com.sqmy.model.ComplaintsReport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="attachment" property="attachment" jdbcType="VARCHAR" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sqmy.model.ComplaintsReport" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idcard, name, sex, job, phone_num, address, attachment, unit_name
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from complaints_report
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from complaints_report
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sqmy.model.ComplaintsReport" >
+    insert into complaints_report (id, idcard, name, 
+      sex, job, phone_num, 
+      address, attachment, unit_name, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{idcard,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{attachment,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sqmy.model.ComplaintsReport" >
+    insert into complaints_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sqmy.model.ComplaintsReport" >
+    update complaints_report
+    <set >
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sqmy.model.ComplaintsReport" >
+    update complaints_report
+    set idcard = #{idcard,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sqmy.model.ComplaintsReport" >
+    update complaints_report
+    set idcard = #{idcard,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--自己写的mapper-->
+  <select id="getAllComplaints" resultMap="BaseResultMap">
+    SELECT * FROM complaints_report WHERE name is not null
+  </select>
+</mapper>

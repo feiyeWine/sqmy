@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sqmy.dao.UnitsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sqmy.model.UnitsInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="unit_num" property="unitNum" jdbcType="VARCHAR" />
+    <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="classes" property="classes" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_num, unit_name, phone_num, email, type, classes, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from units_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from units_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sqmy.model.UnitsInfo" >
+    insert into units_info (id, unit_num, unit_name, 
+      phone_num, email, type, 
+      classes, create_time)
+    values (#{id,jdbcType=INTEGER}, #{unitNum,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
+      #{phoneNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{classes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sqmy.model.UnitsInfo" >
+    insert into units_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitNum != null" >
+        unit_num,
+      </if>
+      <if test="unitName != null" >
+        unit_name,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="classes != null" >
+        classes,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="unitNum != null" >
+        #{unitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null" >
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sqmy.model.UnitsInfo" >
+    update units_info
+    <set >
+      <if test="unitNum != null" >
+        unit_num = #{unitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null" >
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null" >
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sqmy.model.UnitsInfo" >
+    update units_info
+    set unit_num = #{unitNum,jdbcType=VARCHAR},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--自己添加mapper-->
+  <select id="selectAllUnits" resultMap="BaseResultMap">
+    SELECT * FROM units_info
+  </select>
+</mapper>

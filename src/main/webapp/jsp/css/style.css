@@ -1,0 +1,244 @@
+
+html, body, div, p, form, label, ul, li, dl, dt, dd, ol, img, button, h1, h2, h3, h4, h5, h6, b, em, strong, small {
+    border: 0 none;
+    font-style: normal;
+    font-weight: normal;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+dl, dt, dd {
+    display: block;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+body {
+    background: #f6f6f6 none repeat scroll 0 0;
+    color: #666;
+    font-family: Microsoft YaHei,Verdana,Arial,SimSun;
+    font-size: 14px;
+    overflow: hidden;
+}
+.block, #block {
+    display: block;
+}
+.none, #none {
+    display: none;
+}
+.top {
+    background: #f6f6f6 none repeat scroll 0 0;
+    height: 5px;
+    line-height: 5px;
+    position: fixed;
+    text-align: center;
+    top: 60px;
+    width: 100%;
+    z-index: 120;
+}
+.bottom {
+    background: #f6f6f6 none repeat scroll 0 0;
+    bottom: 30px;
+    height: 5px;
+    line-height: 5px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 255;
+}
+#header {
+    background: #0099cc none repeat scroll 0 0;
+    height: 70px;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+.logo {
+    color: #fff;
+    float: left;
+    font-size: 30px;
+    letter-spacing: 3px;
+    line-height: 60px;
+    margin-left: 20px;
+}
+.navigation {
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    margin: 15px 30px 0 0;
+}
+.navigation ul li {
+    float: left;
+    height: 20px;
+    line-height: 40px;
+    margin-left: 15px;
+    text-align: center;
+}
+.navigation ul li a {
+    color: #fff;
+}
+.navigation ul li a:hover {
+    color: #32323a;
+}
+#footer {
+    background: #5e5e5e none repeat scroll 0 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 200;
+}
+#footer p {
+    color: #fbfbfb;
+    line-height: 30px;
+    text-align: center;
+}
+#content {
+    background: #f6f6f6 none repeat scroll 0 0;
+    bottom: 30px;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    z-index: 10;
+}
+.left_menu {
+    background: #32323a none repeat scroll 0 0;
+    border-left: 1px solid #f6f6f6;
+    float: left;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    width: 240px;
+}
+.left_menu ul li {
+    display: inline;
+    width: 240px;
+}
+.left_menu ul li .list-item a {
+    color: #f5f5f5;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 70px;
+    text-decoration: none;
+    width: 230px;
+}
+.left_menu ul li a.noline {
+    border-bottom: medium none;
+}
+.left_menu ul li a:hover {
+    color: #fff;
+}
+.left_menu ul li a.selected:hover {
+    color: #fff;
+}
+.left_menu ul li h4 {
+    background: rgba(0, 0, 0, 0) url("../images/bg1.png") no-repeat scroll 270px 18px;
+    color: #f5f5f5;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 48px;
+    padding-left: 60px;
+    text-decoration: none;
+}
+.left_menu ul li.noline {
+    border-bottom: medium none;
+}
+.left_menu ul li.selected h4 {
+    background-color: #32323a;
+    background-position: 270px -45px;
+}
+.left_menu li .list-item {
+    background: #0099cc none repeat scroll 0 0;
+    overflow: hidden;
+    padding: 5px 0;
+    position: relative;
+}
+.left_menu h4 span {
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 26px;
+    margin-right: 10px;
+    margin-top: 12px;
+    padding-right: 30px;
+    width: 20px;
+}
+.M1 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll 0 -6px;
+}
+.M2 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -36px -6px;
+}
+.M3 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -72px -6px;
+}
+.M4 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -36px -40px;
+}
+.M5 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -72px -40px;
+}
+.M6 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -1px -40px;
+}
+.M7 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -1px -70px;
+}
+.M8 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -36px -70px;
+}
+.M9 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -72px -70px;
+}
+.M10 span {
+    background: rgba(0, 0, 0, 0) url("../images/ioc.png") repeat scroll -3px -105px;
+}
+.m-right {
+    height: 100%;
+    margin-left: 240px;
+}
+.right-nav {
+    background: #f6f6f6 none repeat scroll 0 0;
+    border-bottom: 1px solid #d1d1d1;
+    height: 40px;
+}
+.right-nav li {
+    color: #464646;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    margin-left: 5px;
+}
+.right-nav li img {
+    left: 15px;
+    position: relative;
+    top: 17px;
+}
+.right-nav li a {
+    color: #464646;
+}
+.right-nav li a:hover {
+    color: #00a5a5;
+    text-decoration: underline;
+}
+.main {
+    background: #f6f6f6 none repeat scroll 0 0;
+    height: 100%;
+    margin-left: 15px;
+    overflow: auto;
+    width: 100%;
+}
+.list-item a:hover{
+    background-color:#33cc00;
+}

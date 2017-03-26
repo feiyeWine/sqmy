@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sqmy.dao.SumOrderMapper" >
+
+    <select id="getSumUnits" resultType="com.sqmy.model.SumOrder">
+        SELECT t.sum,units_info.unit_name as name FROM
+        (SELECT
+            tb_score.caiyong_unit_id AS unit_id,
+            COUNT(tb_score.caiyong_unit_id) AS sum
+        FROM
+            tb_score
+        GROUP BY
+            (tb_score.caiyong_unit_id)
+        ORDER BY
+            COUNT(tb_score.caiyong_unit_id)
+        LIMIT 5) AS t,units_info
+        WHERE units_info.id=t.unit_id
+        ORDER BY
+           t.sum desc
+    </select>
+
+    <select id="getSumMembers" resultType="com.sqmy.model.SumOrder">
+        SELECT t.sum,cppcc_member.`name` FROM
+        (SELECT
+            tb_score.cppcc_id AS cppcc_id,
+            COUNT(tb_score.cppcc_id) AS sum
+        FROM
+            tb_score
+        GROUP BY
+            (tb_score.cppcc_id)
+        ORDER BY
+            COUNT(tb_score.cppcc_id)
+        LIMIT 5) AS t,cppcc_member
+        WHERE cppcc_member.id=t.cppcc_id
+        ORDER BY
+           t.sum desc
+    </select>
+</mapper>
